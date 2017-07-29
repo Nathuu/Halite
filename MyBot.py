@@ -17,6 +17,31 @@ def assign_move(square):
         return Move(square, random.choice((NORTH, WEST)))
 
 
+def findNearestEnemyDirection(loc):
+    CARDINALS = NORTH, EAST, SOUTH, WEST, STILL
+    direction = NORTH;
+    
+    maxDistance = min(game_map.width, game_map.height) / 2;
+
+    for direction, in CARDINALS :
+        distance = 0
+        current = loc
+        site = game_map.getSite(current, direction)
+        while (site.owner == id and distance < maxDistance):
+            distance += 1
+            current = game_map.getLocation(current, direction)
+            site = game_map.getSite(current)
+
+
+        if (distance < maxDistance):
+            newDirection = direction
+            maxDistance = distance
+
+
+
+    return newDirection
+
+
 while True:
     game_map.get_frame()
     moves = [assign_move(square) for square in game_map if square.owner == myID]
