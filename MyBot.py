@@ -2,12 +2,12 @@ import hlt
 from hlt import NORTH, EAST, SOUTH, WEST, STILL, Move, Square
 import random
 
+
 myID, game_map = hlt.get_init()
 hlt.send_init("PythonBot")
 
-
 def assign_move(square):
-    if square.strength == 0:
+    if square.strength < 5 * square.production:
         return Move(square, STILL)
     else:
         return Move(square, random.choice((NORTH, EAST, SOUTH, WEST, STILL)))
