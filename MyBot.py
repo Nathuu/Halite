@@ -10,7 +10,7 @@ def assign_move(square):
     if square.strength < 5 * square.production:
         return Move(square, STILL)
     else:
-        return Move(square, random.choice((NORTH, EAST, SOUTH, WEST, STILL)))
+        return Move(square, random.choice((NORTH, WEST)))
 
 
 while True:
